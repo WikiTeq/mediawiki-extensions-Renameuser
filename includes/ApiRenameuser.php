@@ -32,7 +32,7 @@ class ApiRenameuser extends ApiBase {
 			$this->dieWithError( 'The user does not exist' );
 		}
 
-		$newUser = $userFactory->newFromName( $params['newname'] );
+		$newUser = $userFactory->newFromName( $params['newname'], $userFactory::RIGOR_CREATABLE );
 		if ( !$newUser ) {
 			$this->dieWithError( 'The newname parameter is invalid username' );
 		}
