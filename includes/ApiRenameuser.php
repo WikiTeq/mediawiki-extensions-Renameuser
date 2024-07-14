@@ -28,7 +28,8 @@ class ApiRenameuser extends ApiBase {
 		if ( !$oldUser ) {
 			$this->dieWithError( 'The oldname parameter is invalid username' );
 		}
-		if ( $oldUser->getId() === 0 ) {
+		$uid = $oldUser->getId();
+		if ( $uid === 0 ) {
 			$this->dieWithError( 'The user does not exist' );
 		}
 
@@ -40,11 +41,18 @@ class ApiRenameuser extends ApiBase {
 			$this->dieWithError( 'New username must be free' );
 		}
 
+		// Give other affected extensions a chance to validate or abort
+		$hookContainer = $this->getHookContainer();
+		$hookRunner = new RenameuserHookRunner( $hookContainer );
+		if ( !$hookRunner->onRenameUserAbort( $uid, $oldUser->getName(), $newUser->getName() ) ) {
+			$this->dieWithError( 'Aborted by the RenameUserAbort hook' );
+		}
+
 		$performer = $this->getUser();
 		$renameJob = new RenameuserSQL(
 			$oldUser->getName(),
 			$newUser->getName(),
-			$oldUser->getId(),
+			$uid,
 			$performer,
 			[
 				'reason' => $params['reason']
