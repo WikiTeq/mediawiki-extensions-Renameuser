@@ -49,6 +49,9 @@
 	"AvailableRights": [
 		"renameuser"
 	],
+	"APIModules": {
+		"renameuser": "MediaWiki\\Extension\\Renameuser\\ApiRenameuser"
+	},
 	"SpecialPages": {
 		"Renameuser": {
 			"class": "MediaWiki\\Extension\\Renameuser\\SpecialRenameuser",
