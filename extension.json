@@ -46,6 +46,14 @@
 	"LogActionsHandlers": {
 		"renameuser/renameuser": "MediaWiki\\Extension\\Renameuser\\RenameuserLogFormatter"
 	},
+	"GrantPermissions": {
+		"renameuser": {
+			"renameuser": true
+		}
+	},
+	"GrantPermissionGroups": {
+		"renameuser": "renameuser"
+	},
 	"AvailableRights": [
 		"renameuser"
 	],
