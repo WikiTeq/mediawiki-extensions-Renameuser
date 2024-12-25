@@ -6,6 +6,7 @@ use Article;
 use LogEventsList;
 use MediaWiki\Hook\ContributionsToolLinksHook;
 use MediaWiki\Hook\GetLogTypesOnUserHook;
+use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 use MediaWiki\Page\Hook\ShowMissingArticleHook;
 use MediaWiki\Permissions\PermissionManager;
 use SpecialPage;

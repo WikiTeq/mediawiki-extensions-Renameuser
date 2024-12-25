@@ -25,7 +25,8 @@
 	"Hooks": {
 		"ShowMissingArticle": "main",
 		"ContributionsToolLinks": "main",
-		"GetLogTypesOnUser": "main"
+		"GetLogTypesOnUser": "main",
+		"LoadExtensionSchemaUpdates": "schemaUpdates"
 	},
 	"HookHandlers": {
 		"main": {
@@ -33,6 +34,9 @@
 			"services": [
 				"PermissionManager"
 			]
+		},
+		"schemaUpdates": {
+			"class": "MediaWiki\\Extension\\Renameuser\\SchemaUpdatesHook"
 		}
 	},
 	"JobClasses": {
